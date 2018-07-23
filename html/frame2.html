@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>发项目</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <style>
+       .header{
+       		padding: 1rem 0;
+       		color: white;
+       		/*position: fixed;*/
+       		width: 100%;
+       }
+       html{
+       		min-height:100% ;
+       }
+       #container{
+ 	      	min-height: 100%;
+       		position: relative;
+       		background: -webkit-linear-gradient(top,#071039,#19306F);
+       		background: -moz-linear-gradient(top,#071039,#19306F);
+       }
+       .step_item{
+       		width: 25%;
+       }
+       .step_number{
+       		background: url(../image/step_unactive.png);
+       		background-size: 100% 100%;
+       		width: 2rem;
+       		height: 2rem;
+       		text-align: center;
+       		line-height: 2rem;
+       		color: #FFFFFF;
+       		margin: -0.8rem auto 0 auto;
+       	}
+       	.step_item:nth-child(1) .step_number{
+       		background-size: 100% 100%;
+       		margin: -0.9rem auto 0 0rem;
+       	}
+       	.step_item.active .step_number{
+       		background: url(../image/step_active.png);
+       		width: 3rem;
+       		height: 3rem;
+       		background-size: 100% 100%;
+       		line-height: 3rem;
+       		margin: -1.4rem auto 0 auto;
+       	}
+       	.step{
+       		background: url(../image/step_bg.png);
+       		background-size: 100% 100%;
+       		height: 0.3rem;
+       		display: flex;
+       		width: 70%;
+       		margin:1rem 15%;
+       	}
+       	.step_item:nth-child(1){
+       		margin-left: -1rem;
+       	}
+       	.step_item:nth-child(4){
+       		position: absolute;
+       		right: 0.5rem;
+       	}
+       	.step_item:nth-child(2){
+       		margin: 0 1rem 0 1.2rem;
+       	}
+       	.step_item:nth-child(3){
+       		margin: 0 1rem 0 0.2rem;
+       	}
+       	.step_info{
+       		font-size: 0.8rem;
+       		color: #FFFFFF;
+       		display: inline-block;
+       		text-align: center;
+       		margin-top: 0.8rem;
+       		width: 100%;
+       	}
+       	.step_item.active .step_info{
+       		color: #02bebf;
+       		margin-top: 0.4rem;
+       	}
+       	.upload{
+       		display: flex;
+       		width: 76%;
+       		margin-left: 13%;
+       		/*margin-top: 4rem;*/
+       	}
+       	.upload .up_item{
+       		width: 33.33%;
+       		text-align: center;
+       		color: #FFFFFF;
+       		font-size: 0.8rem;
+       	}
+       	.upload .up_item img{
+       		margin-top: 3rem;
+       		width: 60%;
+       		padding: 0 25%;
+       	}
+       	.upload .up_item span{
+       		width: 100%;
+       		text-align: center;
+       		vertical-align: middle;
+       	}
+       	.img{
+       		width:4rem;
+       		height: 4rem;
+       		margin: 0 auto;
+       	}
+       	.iplan{
+       		background: url(../image/upload_plan.png);
+       		background-size: 100% 100%;
+       	}
+       	.iother{
+       		background: url(../image/upload_other.png);
+       		background-size: 100% 100%;
+       	}
+       	.isound{
+       		background: url(../image/upload_sound.png);
+       		background-size: 100% 100%;
+       	}
+       	.up{
+       		position: relative;
+       		width: 86%;
+       		margin-top: 1rem;
+       		margin-left: 7%;
+       		border-top: 1px dashed rgba(220,220,220,0.5);
+       		color: #FFFFFF;
+       	}
+       	.up ul{
+       		width: 100%;
+       		margin-top: 0.2rem;
+       		padding: 0;
+       	}
+       	.up ul li{
+       		position: relative;
+       		list-style: none;
+       		/*width: 33.33%;*/
+       		width: 50%;
+       		font-size: 0.4rem;
+       		text-align: center;
+       		text-overflow: ellipsis;
+       		overflow: hidden;
+       		white-space: nowrap;
+       		float: left;
+       	}
+       	.up ul li:nth-child(1){
+       		width: 50%;
+       		/*padding: 0 4.5%;*/
+       	}
+       	.title{
+       		width: 100%;
+       		display: flex;
+       		text-align: center;
+       	}
+       	.plan_intro,.other_intro,.sound_intro{
+   			white-space: nowrap;
+       		text-overflow: ellipsis;
+       		overflow: hidden;
+       	}
+       	.star{
+       		color: #ff6661;
+       		float: left;
+       	}
+       	.plan_intro .intro_name{
+       		display: block;
+       		width: 45%;
+       		margin-left: 0.2rem;
+       		white-space: nowrap;
+       		text-overflow: ellipsis;
+       		overflow: hidden;
+       	}
+       	.change_btn{
+			float: right;
+       		width: 40%;
+       		color: #ff6661;
+       	}
+       	.unchange ,.change{
+       		margin-left: 2%;
+       	}
+       	.unchange{
+       		color: darkgray;
+       		float: left;
+       		margin-left: 2%;
+       	}
+       	.up li span{
+       		display: block;
+       		float: left;
+       	}
+       	.price{
+       		margin-left: 5%;
+       		width: 40%;
+       		white-space: nowrap;
+       		text-overflow: ellipsis;
+       		overflow: hidden;
+       	}
+       	.complete_info{
+       		margin-top: 1rem;
+       		padding-left: 1.2rem;
+       		color: #FFFFFF;
+       	}
+       	.comp{
+       		text-indent: 0.8rem;
+       		padding-bottom: 0.5rem;
+       		border-bottom: 1px solid grey;
+       	}
+       	.star1{
+       		color: #FF6661;
+       		display: inline;
+       	}
+       	.item_title{
+       		margin: 0.2rem 0;
+       	}
+       	.item_info{
+       		border-bottom: 1px #F6F6F6 dashed;
+       		padding-bottom: 0.5rem;
+       		overflow: auto;
+       	}
+       	.item_info:nth-child(5){
+       		border: 0;
+       	}
+       	.input_box{
+       		background: url(../image/inputbox_bg.png);
+       		background-size: 100% 100%;
+       		height: 2.4rem;
+       		width: 90%;
+       		/*margin-left: 0.5rem;*/
+       	}
+       	.input_box input{
+       		border: none;
+       		height: 2.4rem;
+       		line-height: 2.4rem;
+       		outline: none;
+       		color: #FFFFFF;
+       		text-indent: 0.5rem;
+       	}
+       	::-webkit-input-placeholder{
+       		color: rgba(255,255,255,0.5);
+       	}
+       	.part1 li{
+       		width: 30%;
+       		float: left;
+       		margin: 0.3rem 0;
+       	}
+       	.part2 li{
+       		width: 100%;
+			margin: 0.3rem 0;
+			overflow: auto;
+       	}
+       	.part2 li:nth-child(2) span:nth-child(2){
+       		width: 90%;
+       	}
+       	.item_info ul li span{
+       		float: left;
+       		vertical-align: middle;
+       	}
+       	.check span:nth-child(1){
+       		width: 1rem;
+       		height: 1rem;
+       		margin: 0 0.5rem 0 0;
+       		background: url(../image/icon_checkf.png);
+       		background-size: 100% 100%;
+       	}
+       	.check.active span:nth-child(1){
+       		background: url(../image/icon_checkt.png);
+       		background-size: 100% 100%;
+       	}
+       	.anoy{
+       		width: 1rem;
+       		height: 1rem;
+       		margin: 0 0.2rem;
+       		background: url(../image/icon_checkf.png);
+       		background-size: 100% 100%;
+       		vertical-align: middle;
+       	}
+       	.anoy.active{
+       		background: url(../image/icon_checkt.png);
+       		background-size: 100% 100%;
+       		vertical-align: middle;
+       	}
+       	.complete_info{
+       		font-size: 0.8rem;
+       	}
+       	.select_box{
+       		width: 100%;
+       		overflow: auto;
+       	}
+       	.select_box select{
+       		width: 45%;
+       		margin:0.5rem 0rem;
+       		float: left;
+       		height: 1.5rem;
+       		border: 1px solid rgb(1,191,190);
+       		border-radius: 0.2rem;
+       		/*box-shadow: 1px 1px 1px 1px #FFFFFF;*/
+       		appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            background: transparent;
+            /*background: url(../image/select_bg.png) no-repeat right center;*/
+           	text-indent: 0.5rem;
+            color: rgba(255,255,255,0.5);
+            /*outline: none;
+            border: none;*/
+       	}
+       	.select_box select:nth-child(2){
+       		margin-left: 5%;
+       	}
+       	input[type="radio"]{
+       		display: none;
+       	}
+       	.aui-dialog{
+       		background-color: #B3E5FC;
+       	}
+       	.submit{
+       		color: #fe815f;
+       		text-align: right;
+       		padding-right: 4rem;
+       		margin-top: 0.5rem;
+       	}
+       	.step_box{
+       		display: none;
+       		margin-top: 4rem;
+       	}
+       	.step_box.active{
+       		display: block;
+       	}
+       	.dialog-mask{
+       		display: none;
+       		position: fixed;
+		    width: 100%;
+		    height: 100%;
+		    top: 0;
+		    left: 0;
+		    background: rgba(0,191,255,0.4);
+		    z-index: 99;
+    	}
+    	.upload_box{
+    		width: 80%;
+    		border-radius: 2rem;
+    		position: absolute;
+    		padding: 3rem 2rem;
+    		margin-left: 10%;
+    		margin-top:-8rem ;
+    		top: 50%;
+    		background: ghostwhite;
+    		/*background: rgba(0,0,255,0.6);*/
+    	}
+    	.upload_box input[type='text']{
+    		background: blue;
+    	}
+    	input[name='price']{
+    		/*background: #02BEBF;*/
+    		border-radius: 0.3rem;
+    		border: 1px solid rgb(2,190,191);
+    		margin: 1rem 0;
+    		outline: none;
+    		padding-left:1rem ;
+    	}
+    	button{
+    		background: rgb(2,190,191);
+    		color: white;
+    		/*padding: 1rem 0.5rem;*/
+    		text-align: center;
+    		float: right;
+    		width: 30%;
+    		height: 2rem;
+    		line-height: 2rem;
+    	}
+    	input[type='file']{
+    		
+    	}
+    	input::-webkit-input-placeholder{
+    		color: #02BEBF;
+    	}
+    	.cancle{
+    		margin-left: 2rem;
+    	}
+    	.file_submit{
+    		
+    	}
+    </style>
+</head>
+<body>
+	<div id="container">
+		<div class="header"></div>
+    	<ul class="step">
+    		<li class="step_item active">
+    			<div class="step_number">
+    				1
+    			</div>
+    			<div class="step_info">
+    				项目信息
+    			</div>
+    		</li>
+    		<li class="step_item">
+    			<div class="step_number">
+    				2
+    			</div>
+    			<div class="step_info">
+    				上传文件
+    			</div>
+    		</li>
+    		<li class="step_item">
+    			<div class="step_number">
+    				3
+    			</div>
+    			<div class="step_info">
+    				项目预览
+    			</div>
+    		</li>
+    		<li class="step_item">
+    			<div class="step_number">
+    				4
+    			</div>
+    			<div class="step_info">
+    				完成
+    			</div>
+    		</li>
+    	</ul>
+    	<div class="step_box active">
+	    	<div class="complete_info">
+	    		<div class="comp">
+	    				请完善以下信息(<span class="star1">*</span>必填)
+	    		</div>
+	    		<div class="info_detail">
+	    			<!--<form action="http://192.168.1.198:8080/ope/project/addProject" method="post">-->
+		    			<div class="item_info">
+		    				<div class="item_title">项目标题  <span class="star1">*</span></div>
+		    				<div class="input_box">
+			    				<input type="text" name="" id="title" placeholder="输入项目标题以吸引买方" value="" />
+			    			</div>
+		    			</div>
+		    			<div class="item_info">
+		    				<div class="item_title">
+		    				项目名称(
+		    				<span class="anoy active"><input type="radio" name="ispublic" id="" value="0" checked/></span>匿名
+		    				<span class="anoy"><input type="radio" name="ispublic" id="" value="1" /></span>非匿名
+		    				) <span class="star1">*</span></div>
+		    				<div class="input_box">
+			    				<input type="text" name="name" id="" placeholder="输入项目的真实名称" value="" />
+			    			</div>
+		    			</div>
+		    			<div class="item_info">
+		    				<div class="item_title">我在项目中的角色  <span class="star1">*</span></div>
+		    				<ul class="part1">
+		    					<li class="check active"><span></span><span>财务顾问</span><input type="radio" name="role" id="" value="0" checked=""/></li>
+		    					<li class="check"><span></span><span>财务顾问</span><input type="radio" name="role" id="" value="1" /></li>
+		    					<li class="check"><span></span><span>潜在投资人</span><input type="radio" name="role" id="" value="2" /></li>
+		    					<li class="check"><span></span><span>行业协会</span><input type="radio" name="role" id="" value="3" /></li>
+		    					<li class="check"><span></span><span>园区代表</span><input type="radio" name="role" id="" value="4" /></li>
+		    					<li class="check"><span></span><span>其他</span><input type="radio" name="role" id="" value="5" /></li>
+		    				</ul>
+		    			</div>
+		    			<div class="item_info">
+		    				<div class="item_title">设定项目要素和项目信息的公开范围, 不包括Blind Teaser <span class="star1">*</span></div>
+		    				<ul class="part2">
+		    					<li class="check active"><span></span><span>所有用户都可见,可以直接申请NDA(意向)</span><input type="radio" name="lv" id="" value="0" checked=""/></li>
+		    					<li class="check"><span></span><span>我邀请的用户课件，并可以直接申请NAD(意向),非我邀请的用户需经过我同意后才可见</span><input type="radio" name="lv" id="" value="1" /></li>
+		    					<li class="check"><span></span><span>所有用户都不可见，都需经过我同意后才可见</span><input type="radio" name="lv" id="" value="2" /></li>
+		    				</ul>
+		    			</div>
+		    			<div class="item_info">
+		    				<div class="item_title">行业分类 <span class="star1">*</span> </div>
+		    				<div class="select_box">
+		    					<select name="a_menu" id="a_menu">
+			    					<option value="">行业</option>
+			    				</select>
+			    				<select name="b_menu" id="b_menu">
+			    					<option value="">二级行业</option>
+			    				</select>
+		    				</div>
+		    				<div class="item_title">请输入关键词</div>
+		    				<div class="input_box">
+		    					<input type="text" name="keyword" id="" placeholder="输入关键词,以空格分开" value="" />
+		    				</div>
+		    				<div class="submit">下一步</div>
+		    			</div>
+	    		</div>
+	    	</div>
+    	</div>
+    	
+    	<div class="step_box">
+    		 <div class="upload">
+	    		<div class="up_item" onclick="dialogP()">
+	    			<div class="img iplan"></div>
+	    			<span>上传计划书</span>
+	    		</div>
+	    		<div class="up_item"onclick="dialogO()">
+	    			<div class="img iother"></div>
+	    			<span>上传其他附件</span>
+	    		</div>
+	    		<div class="up_item">
+	    			<div class="img isound"></div>
+	    			<span>长按录音</span>
+	    		</div>
+	    	</div>
+	    	<div class="plan up">
+	    		<ul class="title">
+	    			<!--<li>计划</li>-->
+	    			<li>标题</li>
+	    			<li>定价</li>
+	    		</ul>
+	    		<ul class="plan_intro">
+	    			<!--<li>计划书20180608.docx</li>-->
+	    			<li>
+	    				<span class="star">*</span>
+	    				<span class="intro_name">计划书20180608</span>
+	    				<!--<span class="change_btn" onclick="openChangeD(this)">可修改</span>-->
+	    			</li>
+	    			<li>
+	    				<span class="price">120,000</span>
+	    				<!--<span class="unchange">不可修改</span>-->
+	    			</li>
+	    		</ul>
+	    	</div>
+	    	<div class="planother up">
+	    		<ul class="title">
+	    			<!--<li>计划</li>-->
+	    			<li>标题</li>
+	    			<li>定价</li>
+	    		</ul>
+	    		<ul class="plan_intro">
+	    			<!--<li>计划书20180608.docx</li>-->
+	    			<li>
+	    				<span class="star">*</span>
+	    				<span class="intro_name">计划书20180608</span>
+	    				<!--<span class="change_btn" onclick="openChangeD(this)">可修改</span>-->
+	    			</li>
+	    			<li>
+	    				<span class="star">*</span>
+	    				<span class="price">120,000</span>
+	    				<!--<span class="change_btn" onclick="openChangeD(this)">可修改</span>-->
+	    			</li>
+	    		</ul>
+	    	</div>
+	    	<div class="file_submit">提交</div>
+    	</div>
+    	
+	</div>
+	<div class="dialog-mask">
+		<div class="upload_box">
+			<input type="file" name="" id="fileName" value="" onchange="change()"/>
+    		<input type="number" name="price" id="price" value="" placeholder="请输入价格"/>
+    		<button class="cancle">取消</button>
+    		<button class="submitF">添加</button>
+		</div>
+    </div>
+</body>
+<script src="../script/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/aui-dialog.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/aui-toast.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	/*默认第一个选中*/
+	/*	$(".part1").children("li").eq(0).children("input").attr("checked",true)
+		$(".part2").children("li").eq(0).children("input").attr("checked",true)
+		$(".anoy").eq(0).children("input").attr("checked",true)
+	*/
+
+	/*选中状态切换*/
+	$(".check").click(function(){
+		$(this).addClass("active");
+		$(this).siblings().removeClass("active");
+		$(this).children("input[type='radio']").attr("checked",true)
+	})
+	$(".anoy").click(function(){
+		$(this).addClass("active");
+		$(this).siblings().removeClass("active");
+		$(this).children("input[type='radio']").attr("checked")
+	})
+	/*修改项目信息*/
+	var dialog = new auiDialog({})
+	function openChangeD(which){
+		var content = $(which).siblings().eq(1).text();
+		dialog.prompt({
+            title:"请输入内容",
+            text:content,
+            buttons:['取消','确定']
+        },function(ret){
+            if(ret.buttonIndex == 2){
+            	console.log($(".aui-dialog-body input").val());
+            	if ($(".aui-dialog-body input").val() == "") {
+            		$(which).siblings().eq(1).text(content);
+            	}else{
+            		$(which).siblings().eq(1).text($(".aui-dialog-body input").val())
+            	}
+            }
+        })
+	}
+	 var toast = new auiToast({});
+	/*提交项目*/
+	$(".submit").click(function(){
+		if ($("#title").val()=="") {
+			  toast.fail({
+                   title:"请填写项目标题",
+                   duration:2000
+              });
+		}
+		else if($("input[name='name']").val()==""){
+			toast.fail({
+                   title:"请填写项目名称",
+                   duration:2000
+            });
+		}
+		else if ($("#b_menu option:checked").val()=="") {
+			toast.fail({
+               title:"请选择行业",
+               duration:2000
+            });
+		}
+		else{
+			$.ajax({
+			    url: baseUrl+'/app_project/addProject',
+			    type: 'post',
+			    data: {
+			    	title:$("#title").val(),
+			    	name:$("input[name='name']").val(),
+			    	role:$("input[name='role']:checked").val(),
+			    	ispublic:$("input[name='ispublic']:checked").val(),
+			    	lv:$("input[name='lv']:checked").val(),
+			    	keywords:$("input[name='keywords']").val(),
+			    	categoryId:$("#b_menu option:checked").val()
+			    },
+			    dataType:"json",
+			    success:function(data){
+			    	if (data.status == 1) {
+			    		localStorage.setItem("project_id",data.id);
+			    		 toast.success({
+		                    title:"提交成功",
+		                    duration:2000
+		                });
+	                	$(".step_box").eq(0).removeClass("active");
+						$(".step_box").eq(1).addClass("active");
+						$(".step_item").eq(0).removeClass("active");
+						$(".step_item").eq(1).addClass("active");
+			    	}
+			    },
+			    error:function(data){
+			    }
+			})
+		}
+	})
+	/*取消添加文件*/
+	$(".cancle").click(function(){
+		$(".dialog-mask").hide();
+		$("input[type='file']").val("");
+		$("input[type='number']").val("");
+	})
+	/*显示上传文件*/
+	function dialogP(){
+		$(".dialog-mask").show();
+	}
+	/*上传文件*/
+		
+	/*提交附件*/
+	var obj = $("#fileName");	
+	$(".submitF").click(function(){
+		var formData = new FormData();
+		var name = change();
+		/*判断是否有重名文件*/
+		$.ajax({
+			type:"post",
+			url:baseUrl+"/app_project/price",
+			data:{
+				name:name,
+				proId:localStorage.getItem("project_id")
+			},
+			async:true,
+		    dataType:"json",
+		    success:function(data){
+				if (data.ruselt!=0) {
+			//		$.each($("input[type='file']"), function(i,ele) {
+			//			formData.append('file[]', $(this)[0].files[i]);
+			//		});
+					formData.append("file",$("input[type='file']")[0].files[0]);
+					formData.append("amount",$("input[name='price']").val());
+					formData.append("name",nameArr)
+					formData.append("proId",66);
+					$.ajax({
+						type:"post",
+						url:baseUrl+"/app_project/springUpload",
+			//			url:baseUrl+"/app_project/springUploadMove",
+						data:formData,
+						async:true,
+						cache: false,
+					    processData: false,
+					    contentType: false,
+					    dataType:"json",
+					    success:function(data){
+							if (data.ruslet==1) {
+							   var len = obj.files.length;
+							   var temp = obj.files[0].name;
+							   var amount = $("#price").val();
+							   var str = "<ul class='plan_intro'><li><span class='star'>*</span>"
+							   		   +"<span class='intro_name'>"+temp+"</span></li>"
+	    							   +"<li><span class='star'>*</span><span class='price'>"+amount+"</span></li></ul>";
+							   $(".plan.up").append("str");
+							   $(".dialog-mask").hide();
+							}
+					    },error:function(data){
+					    }
+					});
+				}else{
+					toast.fail({
+		                title:"请勿上传相同文件",
+		                duration:2000
+		            });
+				}
+		    },error:function(data){
+		    }
+		});
+
+	})
+    /*请求一级行业*/
+    $.ajax({
+    	type:"post",
+    	url:"http://192.168.20.160:8080/ope/app_project/vewCategory",
+    	async:true,
+    	data:{
+    		id:"0"
+    	},
+    	dataType:"json",
+    	success:function(data){
+    		console.log(data)
+//  		var str = "";
+//			$.each(data.success, function(i,ele) {
+//				str += "<option value='"+ele.id+"'>"+ele.comment+"</option>";
+//			});
+//			$("#a_menu").append(str);
+    	},
+    	error:function(data){
+    		console.log(data)
+    	}
+    });
+    /*关联二级行业*/
+   	 var a = document.getElementById("a_menu");
+     a.onchange = function(){
+    	$.ajax({
+    		type:"post",
+    		url:baseUrl+"/app_project/vewCategory",
+    		async:true,
+    		data:{
+    			id:$("#a_menu option:checked").val()
+    		},
+    		dataType:"json",
+    		success:function(data){
+    			var str = "<option value=''>二级行业</option>";
+    			$.each(data.success, function(i,ele) {
+    				str += "<option value='"+ele.id+"'>"+ele.comment+"</option>";
+    			});
+    			$("#b_menu").html(str);
+    		},error:function(data){
+    			
+    		}
+    	});
+    }
+    function change(){
+    	var obj = document.getElementById("fileName");
+		var len = obj.files.length;
+		var temp = obj.files[0].name;
+		return temp;
+    }
+</script>
+</html>

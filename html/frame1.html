@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>找项目</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <!--<link rel="stylesheet" type="text/css" href=""/>-->
+    <style>	
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+       .wrap{
+       		min-height: 100%;
+       		background:#0F1E50 ;
+       		background-color: -webkit-liner-grandit(top,#0F1E50,#122769);
+       		background-color: -moz-linear-gradient(top, #0F1E50,#122769);
+			background-color: -o-linear-gradient(top,#0F1E50,#122769);
+		}
+		input{
+			height: 1.5rem;
+			line-height: 1.5rem;
+			outline: none;
+			color: #F0F0F0;
+			letter-spacing:2px
+		}
+		input::-webkit-input-placeholder{
+			color: rgba(255,255,255,0.5);
+			letter-spacing:1px
+		}
+		.search-box{
+			padding:0.2rem 0.8rem;
+			margin: 0 0.8rem;
+			border: 2px solid #02bebf;
+			border-radius: 4px;
+			box-shadow: rgba(255,255,255,0.2) 0px 0px 0.4px 0.4px;
+		}
+		.search-box img{
+			width: 2rem;
+			vertical-align: middle;
+		}
+		.i_close{
+			float: right;
+		}
+		.hot_keywords{
+			color: rgba(255,255,255,0.8);
+			margin:0 0.8rem;
+		}
+		.title{
+			margin-top: 0.5rem;
+			font-size: 0.9rem;
+			color: #F0F0F0;
+		}
+		.hot_keywords ul{
+			display: flex;
+			margin-top: 0.5rem;
+		}
+		.hot_keywords ul li{
+			width: 25%;
+			border:2px solid #02bebf;
+			text-align: center;
+			font-size: 0.8rem;
+			margin: 0 0 -2px -2px;
+			padding: 0.5rem 0;
+			letter-spacing: 1px;
+		}
+		.hot_keywords ul li.active{
+			background: #02BEBF;
+		}
+		.recommend_proj{
+			margin: 0 0.5rem;
+		}
+		.proj_list{
+			width: 100%;
+		}
+		.proj_list li{
+			overflow: hidden;
+			/*padding: 0.2rem 0.5rem;*/
+			/*margin: 0.2rem 0.5rem;*/
+			color:rgba(255,255,255,0.75);
+			list-style: none;
+			background: url(../image/project_list_bg.png);
+			background-size: 100% 100%;
+			position: relative;
+		}
+		.recommend_proj .title{
+			padding-left: 1rem;
+		}
+		.left{
+			display: flex;
+			width: 90%;
+			margin: 1.1rem 0.5rem;
+		}
+		.proj.img{
+			vertical-align: middle;
+			
+		}
+		.proj.info{
+			margin-left: 0.5rem;
+			font-size: 0.8rem;
+			width: 50%;
+		}
+		.proj.img  img{
+			display: block;
+			margin: 0 auto;
+			border-radius: 0.6rem;
+			width: 7rem;
+			height: 5rem;		
+		}
+		.proj.img .proj_price{
+			display: flex;
+			font-size:0.8rem;
+			margin-top: 0.5rem;
+		}
+		.proj.img .proj_price{
+			font-size: 0.9rem;
+			font-weight: bold;
+		}
+		.proj_price span:nth-child(3){
+			font-size: 0.5rem;
+			font-weight:bold ;
+			margin-top: 0.1rem;
+		}
+		.proj.img .proj_price img{
+			display: inline-block;
+			width: 1rem;
+			height: 1rem;
+			vertical-align: middle;
+			margin-left:0.2rem;
+			margin-top: 0.1rem;
+		}
+		.proj_price .price{
+			margin: 0 0.2rem 0 0.3rem;
+		}
+		.info_title{
+			font-size: 0.9rem;
+			margin-bottom: 0.1rem;
+		}
+		.info_content{
+			font-size: 0.5rem;
+			letter-spacing: 1px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		    display: -webkit-box;
+			-webkit-line-clamp: 5;
+			-webkit-box-orient: vertical;
+		}
+		.cai img{
+			margin-top: 0.5rem;
+		}
+		.zan span,.cai span{
+			text-align: center;
+			display: block;
+			font-size: 0.6rem;
+		}
+		.zan img,.cai img{
+			width: 2rem;
+			height: 2rem;
+		}
+		.right{
+			position: absolute;
+			right: 1rem;
+			top: 1.1rem;
+		}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+    	<!--<div class="header">
+    		找项目
+    	</div>-->
+    	<div class="search-box">
+    		<img src="../image/icon_search.svg" alt="" />
+    		<input type="text" placeholder="请输入搜索关键词" name="" id="" value="" />
+    		<img class="i_close" src="../image/icon_close.svg"/>
+    	</div>
+    	<div class="hot_keywords">
+    		<div class="title">热门搜索</div>
+    		<ul>
+    			<li class="active">区块链</li>
+    			<li>大数据</li>
+    			<li>人工智能</li>
+    			<li>智慧工厂</li>
+    		</ul>
+    	</div>
+    	<div class="recommend_proj">
+    		<div class="title">
+    			推荐项目
+    		</div>
+    		<ul class="proj_list">
+    			<li>
+    				<div class="left">
+    					 <div class="proj img">
+    						<img src="../image/item1.png"/>
+	    					<div class="proj_price">
+	    						<img src="../image/icon_checkf.png"/>
+	    						<span class="price">8100</span>
+	    						<span>PEToken</span>
+	    					</div>
+	    				</div>
+	    				<div class="proj info">
+	    					<div class="info_title">项目名称</div>
+	    					<div class="info_content">
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    						内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容内容
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    					</div>
+	    				</div>
+    				</div>
+    				<div class="proj right">
+    					<div class="zan">
+    						<img src="../image/icon_zan.svg" alt="" />
+    						<span class="zan count">625</span>
+    					</div>
+    					<div class="cai">
+    						<img src="../image/icon_cai.svg" alt=""/>
+    						<span class="cai count">100</span>
+    					</div>
+    				</div>
+    			</li>
+    			<li>
+    				<div class="left">
+    					 <div class="proj img">
+    						<img src="../image/item1.png"/>
+	    					<div class="proj_price">
+	    						<img src="../image/icon_checkf.png"/>
+	    						<span class="price">8100</span>
+	    						<span>PEToken</span>
+	    					</div>
+	    				</div>
+	    				<div class="proj info">
+	    					<div class="info_title">项目名称</div>
+	    					<div class="info_content">
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    						内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容内容
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    					</div>
+	    				</div>
+    				</div>
+    				<div class="proj right">
+    					<div class="zan">
+    						<img src="../image/icon_zan.svg" alt="" />
+    						<span class="zan count">625</span>
+    					</div>
+    					<div class="cai">
+    						<img src="../image/icon_cai.svg" alt=""/>
+    						<span class="cai count">100</span>
+    					</div>
+    				</div>
+    			</li>
+    			<li>
+    				<div class="left">
+    					 <div class="proj img">
+    						<img src="../image/item1.png"/>
+	    					<div class="proj_price">
+	    						<img src="../image/icon_checkf.png"/>
+	    						<span class="price">8100</span>
+	    						<span>PEToken</span>
+	    					</div>
+	    				</div>
+	    				<div class="proj info">
+	    					<div class="info_title">项目名称</div>
+	    					<div class="info_content">
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    						内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容内容
+	    						项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目内容项目
+	    					</div>
+	    				</div>
+    				</div>
+    				<div class="proj right">
+    					<div class="zan">
+    						<img src="../image/icon_zan.svg" alt="" />
+    						<span class="zan count">625</span>
+    					</div>
+    					<div class="cai">
+    						<img src="../image/icon_cai.svg" alt=""/>
+    						<span class="cai count">100</span>
+    					</div>
+    				</div>
+    			</li>
+    		</ul>
+    	</div>
+    </div>
+</body>
+<script src="../script/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(".hot_keywords li").click(function(){
+		$(this).addClass("active");
+		$(this).siblings().removeClass("active");
+	})
+</script>
+</html>

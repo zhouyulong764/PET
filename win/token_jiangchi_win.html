@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>token奖池</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+		<style type="text/css">
+			.aui-bar-nav{
+				background: rgb(15,30,80);
+			}
+			.aui-title{
+				font-size: 1.2rem; 
+			}
+		</style>
+	</head>
+	<body>
+		<header class="aui-bar aui-bar-nav" id="aui-header">
+			<a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+				<span class="aui-iconfont aui-icon-left"></span>
+			</a>
+			<div class="aui-title">
+				Token奖池
+			</div>
+		</header>
+	</body>
+	<script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../script/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		apiready = function(){
+	        api.parseTapmode();
+	        var header = $api.byId('aui-header');
+	        $api.fixStatusBar(header);
+	        var headerPos = $api.offset(header);
+	        var body_h = $api.offset($api.dom('body')).h;
+	        api.openFrame({
+	            name: 'project_my_frm',
+	            url: '../frame/token_jiangchi_frm.html',
+	            bounces: true,
+	            rect: {
+	                x: 0,
+	                y: headerPos.h,
+	                w: 'auto',
+	                h: 'auto'
+	            }
+	        })
+		};
+		function closeWin(){
+			api.closeWin({
+			});
+		}
+	</script>
+</html>

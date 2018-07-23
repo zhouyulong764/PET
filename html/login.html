@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>登录</title>
+	</head>
+	<style type="text/css">
+		html{
+			/*padding: 0;
+			margin: 0;*/
+			height: 100%;
+		}
+		body{
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: url(../image/login_bg.png);
+			background-size: 100% 100%;
+			font-family: 仿宋;
+			font-weight: bold;
+		}
+		.header{
+			text-align: center;
+			padding-top: 7rem;
+		}
+		.header img{height: 3.5rem;}
+		.intro{
+			font-family: "仿宋";
+			font-weight: bold;
+			font-size: 1.4rem;
+			color: #fefbfb;
+			margin-top: 1rem;
+		}
+		.login_form{
+			padding-top: 2.2rem;
+		}
+		.login_item{
+			border: 1px solid white;
+			border-radius: 2rem;
+			height: 3rem;
+			width: 90%;
+			margin: 0.8rem 5% 0 5%;
+			position: relative;
+		}
+		.login_item img{
+			width: 1.7rem;	
+			padding: 0.5rem 8%;
+		}
+		.login_item:nth-child(2) img{
+			width: 1.5rem;
+		}
+		.name{
+			background: url(../image/icon_user.png);
+		}		
+		.psw{
+			background: url(../image/icon_pass.png);
+		}
+		input{
+			border: none;
+			outline: none;
+			background: transparent;
+			position: absolute;
+			top: 0.5rem;
+			height: 2rem;
+			line-height: 2em;
+			color: rgba(179,179,179,0.6);
+			font-family: "仿宋";
+			font-size: 1.1rem;
+		}
+		::-webkit-input-placeholder{
+			color: rgba(179,179,179,0.6);
+			font-family: "仿宋";
+			font-weight: bold;
+		}
+		::-moz-placeholder { 
+		   color: rgba(179,179,179,0.6);
+		   font-family: "仿宋";
+		   font-weight: bold;
+		}
+		:-ms-input-placeholder { 
+		   color: rgba(179,179,179,0.6);
+		   font-family: "仿宋";
+		   font-weight: bold;
+		}
+		#psw{
+			margin-left: 0.3rem;
+		}
+		.login_btn{
+			width: 90%;
+			height: 3rem;
+			line-height: 3rem;
+			margin:2rem 5% 0 5%;
+			background: #a7adbb;
+			color: #163c6b;
+			font-size: 1.2rem;
+			text-align: center;
+			border-radius:2.5rem ;
+		}
+		.reg_btn{
+			text-align: center;
+			font-size: 1rem;
+			color: #FEFBFB;
+			margin-top: 1rem;
+		}
+	</style>
+	<body>
+		<div class="header">
+			<img src="../image/icon_loginH.png"/>
+			<div class="intro">Private Equity Trader</div>
+		</div>
+		<div class="login_form">
+			<div class="login_item">
+				<img src="../image/icon_user.png"/>
+				<input type="text" name="" id="name" placeholder="用户名" value="" />
+			</div>
+			<div class="login_item">
+				<img src="../image/icon_pass.png"/>
+				<input type="password" name="" id="psw" placeholder="密码" value="" />
+			</div>
+		</div>
+		<div class="login_btn">
+			立即登录
+		</div>
+		<div class="reg_btn">
+			<span>不是平台用户？</span><span class="register">立即注册</span>			
+		</div>
+	</body>
+	<script src="../script/rem.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+	</script>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>PET</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui-slide.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+    <style>
+    	*{
+    		padding: 0;
+    		margin: 0;
+    	}
+    	html{
+    		width: 100%;
+    		height: auto;
+    		font-family: "微软雅黑";
+    	}
+    	body{
+    		min-height:100% ;
+    	}
+    	.wrap{
+    		background: -webkit-linear-gradient(top,#061038,#14286D);
+    		background: -moz-linear-gradient(top,#061038,#14286D);	
+    	}
+    	.container{
+    		padding:10px 10px 0 10px;	
+    		background: rgb(17,32,89);
+    		color: white;
+    		margin: 0;
+    	}
+    	.item_img{
+    		margin: 2px 5px 5px 0;
+    		width:30%;
+    		float: left;
+    	}
+    	.item_info{
+    		margin: 5px;
+    	}
+    	
+    	.item_info div{
+    		font-size: 0.7rem;
+    		overflow: hidden;
+    		white-space: nowrap;
+    		text-overflow: ellipsis;
+    	}
+    	.recommend{background: rgb(27,48,115);position: relative;}
+    	.recommend span:nth-child(2),.trends_title span:nth-child(2){margin-left: 7%;}
+    	.recommend li {border-top: 1px solid black;padding: 5px 0 5px 0;}
+    	.title{
+    		height:2rem;
+    		line-height: 2rem;
+    	}
+    	.arrow{float: right;}
+    	.ic{
+    		display:block;
+    		position: absolute;
+    		margin-top: 1.8%;
+    		left: 3%;
+    		height: 18px;
+    		width: 4px;
+    		background: url(../image/icon_rectangle.png);
+    		background-size: 100% 100%;
+    	}
+    	.ic.ic1{margin-left: 3%;}
+    	.content{
+    		padding:0px 10px 5px 10px ;
+    		background: rgb(15,31,91);
+    	}
+    	.trends_title{
+    		height: 2rem;
+    		line-height: 2rem;
+    		color: white;
+    	}
+    	.trends{background: rgb(31,53,126);}
+    	.trend_list{background: rgb(26,34,83);width: 100%;display: flex;padding-left: 3%;}
+    	.trend_list li{width: 33.33%;color: white;}
+    	.trend_list li:nth-child(3){text-align: center;}
+    	.user_info{display: flex;padding-left: 3%;width: 100%;}
+    	.user_info span{color: white;font-size: 0.6rem;margin-top: 2px;display: block;width: 33%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+    	.user_info span:nth-child(3){text-align: center;padding-left:5%;}
+    	/*.user_info li:nth-child(2){margin-left: 5rem;}
+    	.user_info li:nth-child(3){margin-left: 2rem;}*/
+    	.header{width: 100%;height:2.5rem;line-height: 2.5rem;color: white;text-align: center;font-size: 1.4rem;}
+    	.in_content{
+    		position: absolute;
+    		width: 80%;
+    		height: 6rem;
+    		top: 0.8rem;
+    		left: 10%;
+    		color: whitesmoke;
+    		font-size: 0.9rem;
+    		text-align: center;
+    		padding: 1.5rem  1.5rem 0 1.5rem;
+    		background: rgba(255,255,255,0.2);
+    	}
+    	.in_intro{
+    		position: absolute;
+    		width: 3.5rem;
+    		height: 3.5rem;
+    		right: 4%;
+    		top: 5.2rem;
+    		background: url(../image/icon_in.png);
+    		background-size: 100% 100%;
+    		text-align: center;
+    		line-height: 3.5rem;
+    		color: orange;
+    		font-weight:bold;
+    	}
+    	#aui-slide {margin: 0;padding: 0;}
+    	.zu{
+    		z-index: 10;
+    		width: 40%;
+    		position: absolute;
+    		left: 5%;
+    		top: 2rem;
+    	}
+    	.token{position: relative;}
+    	.in_token{
+    		position: absolute;
+    		right: 15%;
+    		top: 1.2rem;
+    		text-align: center;
+    		background: url(../image/icon_ellipse.png);
+    		background-size: 100% 100%;
+    		width: 4.5rem;
+    		height: 4.5rem;
+    		padding-top: 1rem;
+    	}
+    	.in_token p{
+    		font-size: 0.6rem;
+    		color: white;
+    	}
+    	.aui-slide-wrap{
+    		height: 9.3rem;
+    	}
+    	#demo{
+    		position: relative;
+    		overflow: hidden;
+    		height: 4.05rem;
+    	}
+    	/*#demo ul{
+    		height: 4.05rem;
+    	}*/
+    </style>
+</head>
+<body>
+	<div class="wrap">
+		<!--<div class="header">
+			PET
+		</div>-->
+	    <div id="aui-slide">
+	        <div class="aui-slide-wrap">
+	           <div class="aui-slide-node">
+	                <img src="../image/banner.png"/>
+	                <div class="in_content">
+	                	全球首家基于去跨练技术的私募股权信息服务平台，创造全新的协同投资关系
+	                </div>
+	                <div class="in_intro">
+	                	进 入
+	                </div>
+	            </div>
+	            <div class="aui-slide-node" >
+	                 <img src="../image/banner.png"/>
+	                  <div class="in_content">
+	                	全球首家基于去跨练技术的私募股权信息服务平台，创造全新的协同投资关系
+	                </div>
+	                <div class="in_intro">
+	                	进 入
+	                </div>
+	            </div>
+	            <div class="aui-slide-node"  >
+	                <img src="../image/banner.png"/>
+	                 <div class="in_content">
+	                	全球首家基于去跨练技术的私募股权信息服务平台，创造全新的协同投资关系
+	                </div>
+	                <div class="in_intro">
+	                	进 入
+	                </div>
+	            </div>
+	        </div>
+	        <div class="aui-slide-page-wrap"></div>
+	   </div>
+	   <div class="container">
+	   		<div class="recommend title">
+	   			<span class="ic"></span>
+	   			<span>推荐项目</span>
+	   			<span class="arrow aui-iconfont aui-icon-right"></span>
+	   		</div>
+	   		<ul class="recommend item">
+	   			<li>
+	   				<div class="item_img">
+	   					<img src="../image/item1.png"/>
+	   				</div>
+	   				<div class="item_info">
+	   					<h4>创新高性能锂电池生产商</h4>
+	   					<div class="name">能源/新材连</p>
+	   					<div class="type">类型：股权转让 EBITDA：未披露</div>
+	   					<div class="addr">区块链地址：0x4x4ee4asfscvahf1re824re723a1e0r2</div>
+	   				</div>
+	   			</li>
+	   			<li>
+	   				<div class="item_img">
+	   					<img src="../image/item2.png"/>
+	   				</div>
+	   				<div class="item_info">
+	   					<h4>创新高性能锂电池生产商</h4>
+	   					<div class="name">能源/新材连</p>
+	   					<div class="type">类型：股权转让 EBITDA：未披露</div>
+	   					<div class="addr">区块链地址：0x4x4ee4asfscvahf1re824re723a1e0r2</div>
+	   				</div>
+	   			</li>
+	   		</ul>
+	   </div>
+	   <div class="token">
+	   		<img src="../image/token.png"/>
+	   		<img class="zu" src="../image/icon_zu.png"/>
+	   		<div class="in_token">
+	   		 <p>&nbsp;点击参与  &nbsp;</p>
+	   		<p>赢PEToken<p>
+	   		</div>
+	   </div>
+	   <div class="content">
+	   		<div class="trends">
+		   		<div class="trends_title">
+		   			<span class="ic ic1"></span>
+		   			<span>TOKENDONG动态</span>
+		   		</div>
+		   		<div class="trend_list">
+		   			<li>用户</li>
+		   			<li>动态</li>
+		   			<li>获得奖励</li>
+		   		</div>
+		   		<div id="demo">
+		   			<ul id="con1">
+			   			<li class="user_info">
+				   			<span class="trend_name">陈*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">陈*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">陈*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">李*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">王*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">毕*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">周*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">张*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+				   		<li class="user_info">
+				   			<span class="trend_name">赵*燕</span>
+				   			<span class="trend_tr">上传1个XXXXBP</span>
+				   			<span class="trend_reward">20PETOKEN</span>
+				   		</li>
+			   		</ul>
+		   		</div>
+		   </div>
+	   </div>
+   </div>
+</body>
+<script src="../script/rem.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/aui-slide.js" type="text/javascript" charset="utf-8"></script>
+<script src="../script/jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var slide = new auiSlide({
+		container:document.getElementById("aui-slide"),
+		"speed":300,
+		"autoplay":3000,
+		"pageShow":true,
+		"pageStyle":'dot',
+		"loop":true,
+		'dotPosition':'center'
+	});
+	/*推荐项目*/
+	$.ajax({
+		type:"post",
+		url:baseUrl+"/app_home/recommend",
+		async:true,
+		data:{
+		},
+		dataType:"json",
+		success:function(data){
+			var str = "";
+//			console.log(data)
+			$.each(data, function(i,ele) {
+				str += "<li><div class='item_img'><img src='../image/item1.png'/></div>"
+	   				+  "<div class='item_info'><h4>"+ele.title+"</h4>"
+	   				+  "<div class='name'>"+ele.comment+"/"+ele.pcomment+"</p>"
+	   				+  "<div class='type'>类型："+ele.categoryId+" EBITDA：未披露</div>"
+	   				+  "<div class='addr'>区块链地址："+ele.address+"</div></li>"
+			});
+			$(".recommend.item").html(str);
+		}
+	});
+	/*定时获取用户动态*/
+	$.ajax({
+		type:"post",
+		url:baseUrl+"/app_home/award",
+		async:true,
+		data:{
+			offset:0
+		},
+		dataType:"json",
+		success:function(data){
+			localStorage.setItem("offset",data.offset)
+			var str = "";
+			$.each(data.awards, function(i,ele) {
+				str += "<li class='user_info'>"
+			   		+  "<span class='trend_name'>"+ele.memberName+"</span>"
+			   		+  "<span class='trend_tr'>"+ele.projectName+"</span>"
+			   		+  "<span class='trend_reward'>"+ele.money+"PETOKEN</span>"
+			   		+  "</li>"
+			});	
+			$("#demo ul").html(str);
+		}
+	});
+	setInterval(function(){
+		$.ajax({
+			type:"post",
+			url:baseUrl+"/app_home/award",
+			async:true,
+			data:{
+				offset:localStorage.getItem("offset")
+			},
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+				localStorage.setItem("offset",data.offset)
+				var str = "";
+				$.each(data.awards, function(i,ele) {
+					str += "<li class='user_info'>"
+				   		+  "<span class='trend_name'>"+ele.memberName+"</span>"
+				   		+  "<span class='trend_tr'>"+ele.projectName+"</span>"
+				   		+  "<span class='trend_reward'>"+ele.money+"PETOKEN</span>"
+				   		+  "</li>"
+				});
+				$("#demo ul").html(str);
+			}
+		});
+	},900000)
+	
+	/*隐藏名字*/
+	var doscroll = function(){
+	    var $parent = $('#con1');
+	    var $first = $parent.find('li:first');
+	    var height = $first.height();
+	    $first.animate({
+	        height: 0   //或者改成： marginTop: -height + 'px'
+	        }, 500, function() {// 动画结束后，把它插到最后，形成无缝
+	        $first.css('height', height).appendTo($parent);
+	       // $first.css('marginTop', 0).appendTo($parent);
+	    });
+	};
+	setInterval(function(){doscroll()}, 2000);
+</script>
+</html>
